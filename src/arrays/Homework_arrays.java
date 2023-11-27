@@ -14,8 +14,7 @@ public class Homework_arrays {
         for (int i = 0; i < fruits.length; i++) {
             System.out.println(fruits[i]);
         }
-
-
+        
         evenElements();
 
         System.out.print(findMin());
