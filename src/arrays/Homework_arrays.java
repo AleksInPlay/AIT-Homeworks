@@ -7,14 +7,20 @@ public class Homework_arrays {
         for (int i = 0; i < fruits.length; i++) {
             System.out.println(fruits[i]);
         }
+
+
         fruits[0] = "Kiwi";
         System.out.println("Fruits with Kiwi");
         for (int i = 0; i < fruits.length; i++) {
             System.out.println(fruits[i]);
         }
+
+
         evenElements();
+
         System.out.print(findMin());
     }
+
         static void evenElements(){
             String[] fruits = {"Orange", "Apple", "Banana", "Mango"};
             System.out.println("Even Fruits: ");
