@@ -1,77 +1,68 @@
 package trucks;
 
-public class Truck {
+public class Truck extends Vehicles{
 
-    private String model;
-    private String manufacturer;
-    private int year;
-    private String color;
-    private int maxWeight;
-
-    private int currentWeight = 0;
-    private int maxFuel;
-
-    private int currentFuel = 0;
-    private String owner;
 
     public Truck(String model, String manufacturer, int year, String color, int maxWeight, int maxFuel, String owner) {
-        this.model = model;
-        this.manufacturer = manufacturer;
-        this.year = year;
-        this.color = color;
-        this.maxWeight = maxWeight;
-        this.maxFuel = maxFuel;
-        this.owner = owner;
-    }
+        super(model, manufacturer, year, color, maxWeight, maxFuel, owner);
 
-    public String load(int weight) {
-        if (weight > maxWeight) {
-            System.out.println("Loading too many tons.");
-        }
-        if (weight < maxWeight) {
-            System.out.println("You can load " + (maxWeight - weight) + " tons more.");
-        }
-        if (weight == maxWeight) {
-            System.out.println("Truck is full.");
-        }
-        return toString();
     }
 
 
-    public String unload(int unloadingWeight) {
-        if (unloadingWeight > maxWeight) {
-            System.out.println("You try to unload more than possible.");
+
+
+
+
+    public void load(int weight) {
+        if (weight > getRemainingCapacity()) {
+            System.out.println("This is too heavy for me! Can't continue");
+            printRemainingCapacity();
+            return;
         }
-        if (unloadingWeight < maxWeight) {
-            System.out.println((maxWeight - unloadingWeight) + " tons left on board.");
-        }
-        if (unloadingWeight == maxWeight) {
-            System.out.println("Truck is empty.");
-        }
-        return toString();
+        currentWeight += weight;
+        System.out.println("Loading " + weight + " kg....");
+        System.out.println("Loaded " + weight + "kg.");
+        printRemainingCapacity();
+
     }
 
-    public String move() {
-        System.out.println("Truck can move.");
-        return toString();
+
+    public void unload(int unloadingWeight) {
+      if(unloadingWeight > currentWeight){
+          System.out.println("Not enough cargo !");
+          printRemainingCargo();
+          return;
+      }
+      if(unloadingWeight < 0){
+          System.out.println("Can't unload negative weight");
+          return;
+      }
+        currentWeight -= unloadingWeight;
+        System.out.println("Unloading " + unloadingWeight + "kg....");
+        System.out.println("Unloaded " + unloadingWeight + "kg.");
+        printRemainingCargo();
+
     }
 
-    public String stop(int fuel, int weight) {
-        if (fuel == 0) {
-            System.out.println("You have to stop, fuel tank is empty.");
-        }
-        if (fuel <= 50 && fuel > 0) {
-            System.out.println("You run out of fuel, stop soon.");
-        }
-        if (weight == 0) {
-            System.out.println("You can not move without a load, please stop.");
-        }
-        return toString();
+    private void printRemainingCargo(){
+        System.out.println("Remaining cargo weight is " + currentWeight + " kg ");
     }
 
-    public String fillFuel(int currentFuel) {
-        System.out.println("You have to tank " + (maxFuel - currentFuel)+ " liters.");
-        return toString();
+
+
+    public void stop(int fuel, int weight) {
+        System.out.println("Stopping...");
+        System.out.println("Stopping...");
+        System.out.println("Yes!");
+        return;
+    }
+
+    private void setCurrentFuel(int currentFuel) {
+       if(currentFuel > maxFuel){
+           this.currentFuel = maxFuel;
+          return;
+       }
+       this.currentFuel = currentFuel;
 
     }
 
@@ -79,9 +70,26 @@ public class Truck {
     public String getOwner() {
         return "The owner is " + owner;
     }
+    private void printRemainingCapacity(){
 
+        System.out.println("Remaining capacity " + getRemainingCapacity() + "kg");
+    }
+    private int getRemainingCapacity(){
 
+        return maxWeight - currentWeight;
+    }
+
+    @Override
     public String toString() {
-        return "";
+        return "Truck{" +
+                "model= " + model +
+                ", manufacturer=" + manufacturer +
+                ", year=" + year +
+                ", color=" + color +
+                ", maxWeight=" + maxWeight +
+                ", maxFuel=" + maxFuel +
+                ", currentFuel=" + currentFuel +
+                ", owner=" + owner +
+                '}';
     }
 }
