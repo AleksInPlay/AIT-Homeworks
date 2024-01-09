@@ -1,6 +1,8 @@
 package lesson33;
 
 
+import java.util.Arrays;
+
 public class ClassWorkAccounting {
     public static void main(String[] args) {
         Company company = new Company(5);
@@ -12,7 +14,13 @@ public class ClassWorkAccounting {
         Employee emp4 = new SalesManager(342, "Mary", "Shields", 165, 150000, 0.02);
         Employee emp5 = new SalesManager(255, "James", "Harrison", 117, 180000, 0.02);
 
+        Employee[] emps = {emp1, emp2, emp3, emp4, emp5};
+        Arrays.sort(emps);
+        for(Employee employee: emps) {
+            System.out.println(employee);
+        }
 
+/*
         company.addEmployee(emp1);
         company.addEmployee(emp2);
         company.addEmployee(emp3);
@@ -25,7 +33,6 @@ public class ClassWorkAccounting {
         company.display();
 
         System.out.println(company.sumSalary());
-
-
+*/
     }
 }

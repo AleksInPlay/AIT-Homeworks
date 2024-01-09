@@ -1,6 +1,6 @@
 package lesson33;
 
-public abstract class Employee {
+public abstract class Employee implements Comparable <Employee>{
 
     private int id;
     private String firstName;
@@ -36,6 +36,13 @@ public abstract class Employee {
 
     public abstract double calculateSalary();
 
+
+
+    public int compareTo(Employee e) {
+        return getLastName().compareTo(e.getLastName());
+
+    }
+
     @Override
     public String toString() {
         return "Employee{" +
@@ -45,4 +52,6 @@ public abstract class Employee {
                 ", hour=" + hour +
                 '}';
     }
+
+
 }
