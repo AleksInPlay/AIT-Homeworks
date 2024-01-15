@@ -1,5 +1,7 @@
 package lesson33;
 
+import java.util.Arrays;
+
 public class Company {
 
     private Employee[] employees;
@@ -37,6 +39,15 @@ public class Company {
             sum = sum + employees[i].calculateSalary();
         }
         return sum;
+    }
+    public void Employees(){
+        Arrays.sort(employees,0,companySize);
+    }
+    public void sortEmployeesById(){
+        Arrays.sort(employees,0,companySize,new IdComparator());
+    }
+    public void sortEmployeesByNameThenId(){
+        Arrays.sort(employees,0,companySize, new NameComparator());
     }
 
 }

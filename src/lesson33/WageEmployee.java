@@ -25,4 +25,6 @@ public class WageEmployee extends Employee{
                 "wage=" + wage +
                 '}' + super.toString();
     }
+
+
 }

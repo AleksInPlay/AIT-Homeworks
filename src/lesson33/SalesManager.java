@@ -38,4 +38,7 @@ public class SalesManager extends Employee{
                 ", percent=" + getPercent() +
                 '}' + super.toString();
     }
+
+
+
 }
