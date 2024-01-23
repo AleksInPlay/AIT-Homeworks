@@ -1,0 +1,4 @@
+Person{name='George', age=30}
+Person{name='Bill', age=34}
+Person{name='John', age=28}
+Person{name='Ronald', age=25}
